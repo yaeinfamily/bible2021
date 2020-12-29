@@ -92,6 +92,8 @@
                 savedName = document.getElementById('name').value;
                 if(savedName === "") {
                     alert("이름을 입력해 주세요.");
+                } else if(savedName === "지우고싶어") { //1229 
+                    deleteMode();
                 } else {
                     localStorage.setItem(SN, savedName);
                     localStorage.setItem(AM,1);
@@ -135,11 +137,12 @@
                 }
                 if(userNum < 6) {
                     document.write("<P><input type='text' size='12' name='name' id='name' value='' placeholder='이름을 써 주세요' required>를 위한 ");
-                    document.write("<br><img src='bt_onemore.jpg' width='50%' onclick='addAnotherWord()'></p>");
+                    document.write("<br><img src='bt_onemore.jpg' width='50%' onclick='addAnotherWord()'></P>");
+                    document.write("<br><br><br><P>※최대 5개까지 추가로 더 받을 수 있습니다.</p>");
                 }
 
-                document.write("<br><br><p><img src='50_icon_reset.png' onclick='pushRedButton()'>");
-                document.write("<img src='50_icon_check.png' onclick='pushGreenButton()'></p>");
+                //1229 document.write("<br><br><p><img src='50_icon_reset.png' onclick='pushRedButton()'>");
+                //1229 document.write("<img src='50_icon_check.png' onclick='pushGreenButton()'></p>");
             }
 
             function pushRedButton() {
