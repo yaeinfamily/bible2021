@@ -92,7 +92,7 @@
                 savedName = document.getElementById('name').value;
                 if(savedName === "") {
                     alert("이름을 입력해 주세요.");
-                } else if(savedName === "지우고싶어") { //1229 
+                } else if(savedName === "삭제") { //1229 
                     deleteMode();
                 } else {
                     localStorage.setItem(SN, savedName);
@@ -163,10 +163,12 @@
             }
 
             function removeN(n) {
-                userNum = userNum - 1;
-                ItemNums.splice(n, 1);
-                ItemNames.splice(n, 1);
-                saveLocalStorage();
+                if(n < userNum) {
+                    userNum = userNum - 1;
+                    ItemNums.splice(n, 1);
+                    ItemNames.splice(n, 1);
+                    saveLocalStorage();
+                }
                 location.href="index.html";
             }
 
@@ -181,11 +183,21 @@
                 writeCSSText();
                 document.write("<p><br><br><input type='submit' value='전체삭제' onclick='removeLocalStorageAll()'><br><br>");
                 document.write("<input type='submit' value='내꺼 삭제' onclick='removeMy()'><br><br>");
-                document.write("<input type='submit' value='1번 삭제' onclick='removeWord1()'><br><br>");
-                document.write("<input type='submit' value='2번 삭제' onclick='removeWord2()'><br><br>");
-                document.write("<input type='submit' value='3번 삭제' onclick='removeWord3()'><br><br>");
-                document.write("<input type='submit' value='4번 삭제' onclick='removeWord4()'><br><br>");
-                document.write("<input type='submit' value='5번 삭제' onclick='removeWord5()'></p>");
+                if(userNum>1) {
+                    document.write("<input type='submit' value='1번 삭제' onclick='removeWord1()'><br><br>");
+                }
+                if(userNum>2) {
+                    document.write("<input type='submit' value='2번 삭제' onclick='removeWord2()'><br><br>");
+                }
+                if(userNum>3) {
+                    document.write("<input type='submit' value='3번 삭제' onclick='removeWord3()'><br><br>");
+                }
+                if(userNum>4) {
+                    document.write("<input type='submit' value='4번 삭제' onclick='removeWord4()'><br><br>");
+                }
+                if(userNum>5) {
+                    document.write("<input type='submit' value='5번 삭제' onclick='removeWord5()'></p>");
+                }
             }
         
             function mainPage0() {
